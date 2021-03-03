@@ -4,12 +4,6 @@
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
-iframe{
-  width: 30%;
-  height: 30vh;
-  position: absolute;
-  z-index: 1000;
-}
 .radiocontainer{
   padding: 20px;
   width: 100%;

@@ -16,7 +16,6 @@ var radioLogos = [
 "https://static.wikia.nocookie.net/gta/images/c/ce/Fly-lo-fm.png/revision/latest/scale-to-width-down/135?cb=20181023140150&path-prefix=pt",
 "https://static.wikia.nocookie.net/gta/images/0/05/Blaine-county-talk-radio-official.png/revision/latest/scale-to-width-down/135?cb=20181023140150&path-prefix=pt",
 "https://static.wikia.nocookie.net/gta/images/d/d3/Wctr.png/revision/latest/scale-to-width-down/135?cb=20160118222343&path-prefix=pt",
-"https://static.wikia.nocookie.net/gta/images/d/d3/SelfRadio-GTAV-Logo.png/revision/latest/scale-to-width-down/135?cb=20181023140151&path-prefix=pt",
 "https://static.wikia.nocookie.net/gta/images/1/1a/TheLab-Logo-GTAV.png/revision/latest/scale-to-width-down/135?cb=20181023140151&path-prefix=pt",
 "https://static.wikia.nocookie.net/gta/images/c/c3/BlondedLosSantos-GTAV-OfficialLogoColoured.png/revision/latest/scale-to-width-down/135?cb=20180216165759&path-prefix=pt",
 "https://static.wikia.nocookie.net/gta/images/a/ad/LSUR_Radio_Logo.png/revision/latest/scale-to-width-down/135?cb=20181023140150&path-prefix=pt",
@@ -40,7 +39,6 @@ var radioNames = [
     "Flyd FM",
     "Blaine County",
     "West Coast talk radio",
-    "Self Radio",
     "The lab",
     "Blonded Los Santos",
     "LS UR",
@@ -68,8 +66,10 @@ for (let i = 0; i < radioLogos.length; i++) {
 const radiodiv = document.querySelectorAll(".radio");
  for (let i = 0; i < radioLogos.length; i++) {
     var imgdiv = document.createElement("img");
+
     imgdiv.setAttribute("src", radioLogos[i])
     radiodiv[i].append(imgdiv);
+
     var radioname = document.createElement("p");
     radiodiv[i].append(radioname);
     radioname.setAttribute("class", "radioname");
@@ -83,23 +83,22 @@ for (let i = 0; i < radioNames.length;i++) {
     radio = document.getElementById("ra"+[i])
     radio.addEventListener("click", checkId)
 }
-async function checkId(id){
+function checkId(id){
     radioId = id.path[1].id
     idNumber = radioId.split("ra")
     playAudio()
 }
-async function playAudio(){
-
-    /*
-        var randomHour = Math.floor(Math.random() * 3);
-        var randomSec = Math.floor(Math.random() * 60);
-        var timeStamp = "#t="+((randomHour * 3600)+randomSec);
-    */
-
-    radioaudio[0].setAttribute("src",radioSources[idNumber[1]])
-    console.log(radioaudio[0])
+function playAudio(){
+    radioaudio[0].setAttribute("src",radioSources[idNumber[1]]+"#t=")
+    radioaudio[0].onloadedmetadata = function(){
+        SrcDuration = radioaudio[0].duration;
+        var seconds = SrcDuration.toString().split('.')
+        var randomTime = Math.floor(Math.random() * seconds[0]);
+        console.log(randomTime)
+    }
+    
     radioaudio[0].play()
-    radioaudio[0].volume = 0.2;
+    radioaudio[0].volume = 0.04;
 }
 
 /*
