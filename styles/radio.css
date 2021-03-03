@@ -16,7 +16,7 @@
 .radio{
   cursor: pointer;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   overflow: hidden;
@@ -24,6 +24,7 @@
   width: 80px;
   height: 90px;
   margin: 10px;
+  padding: 8px;
   transition: all 0.2s;
   background-color: rgb(75, 75, 75);
 }
