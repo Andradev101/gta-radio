@@ -86,25 +86,24 @@ var radioLogos = [
   function checkId(id){
       radioId = id.path[1].id
       idNumber = radioId.split("ra")
-      getSrc()
+      getSrc(idNumber);
   }
-  function getSrc(){
-        radioaudio[0].setAttribute("src",radioSources[idNumber[1]])
+  function getSrc(idNumber){
+    idNum = idNumber[1]
+    SrcDuration = radioaudio[0].duration;
+    var seconds = SrcDuration.toString().split('.')
+    var randomTime = Math.floor(Math.random() * seconds[0]);
+    radioaudio[0].setAttribute("src",radioSources[idNum]+"#t="+randomTime)
+    console.log(radioaudio)
         checkTime()
     }
     function checkTime(){
-        radioaudio[0].onloadedmetadata = function (){
-            SrcDuration = radioaudio[0].duration;
-            var seconds = SrcDuration.toString().split('.')
-            var randomTime = Math.floor(Math.random() * seconds[0]);
-            console.log(randomTime)
-        }
         playAudio()
     }
-  function playAudio(){
-    radioaudio[0].play()
-    radioaudio[0].volume = 0.04;
-  }
+    function playAudio(){
+        radioaudio[0].play()
+        radioaudio[0].volume = 0.04;
+    }
   
   /*
       function playAudio(){
