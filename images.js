@@ -48,7 +48,10 @@ var radioNames = [
 ]
 var radioSources = [
     "https://mp3.fastupload.co/data/1614652257/nonstoppopfm.m4a",
-    1,2,3,4,5,
+    "https://mp3.fastupload.co/data/1614719132/space.m4a",
+    "https://mp3.fastupload.co/data/1614719225/westcoastclassics.m4a",
+    "https://mp3.fastupload.co/data/1614719322/rebelradio.m4a",
+    "https://mp3.fastupload.co/data/1614719458/lsrm.m4a",5,6,
     "https://mp3.fastupload.co/data/1614654030/radiolossantos.m4a"
 ]
 
@@ -78,16 +81,25 @@ const radioaudio = document.getElementsByTagName("audio")
 for (let i = 0; i < radioNames.length;i++) {
     let radio = "radio"+[i]
     radio = document.getElementById("ra"+[i])
-    radio.addEventListener("click", playAudio)
+    radio.addEventListener("click", checkId)
+}
+async function checkId(id){
+    radioId = id.path[1].id
+    idNumber = radioId.split("ra")
+    playAudio()
 }
 async function playAudio(){
-    var randomHour = Math.floor(Math.random() * 3);
-    var randomSec = Math.floor(Math.random() * 60);
-    var timeStamp = "#t="+((randomHour * 3600)+randomSec);
 
-    radioaudio[0].setAttribute("src",radioSources[0]+timeStamp)
+    /*
+        var randomHour = Math.floor(Math.random() * 3);
+        var randomSec = Math.floor(Math.random() * 60);
+        var timeStamp = "#t="+((randomHour * 3600)+randomSec);
+    */
+
+    radioaudio[0].setAttribute("src",radioSources[idNumber[1]])
+    console.log(radioaudio[0])
     radioaudio[0].play()
-    radioaudio[0].volume = 0.04;
+    radioaudio[0].volume = 0.2;
 }
 
 /*
