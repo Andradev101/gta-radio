@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "introduction" content = "no-reference">
-    <link rel="stylesheet" href="/styles/radio.css">
-    <title>GTA Radio</title>
+  <meta charset="UTF-8">
+  <link href="/resources/images/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="introduction" content="no-reference">
+  <link rel="stylesheet" href="/styles/radio.css">
+  <link rel="stylesheet" href="/styles/btnStyles.css">
+  <title>GTA Radio</title>
 </head>
+
 <body>
+  <div class="flexcontainer">
     <div class="radiocontainer"></div>
-    <audio preload="metadata"></audio>
+    <div class="volume">
+      <input type="range" id="volume-control">
+    </div>
+  </div>
+  <audio preload="metadata" loop></audio>
   <script src="/scripts/images.js"></script>
   <script src="/scripts/audioPlayer.js"></script>
 </body>
+
 </html>

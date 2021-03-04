@@ -18,8 +18,7 @@ var radioLogos = [
     "https://static.wikia.nocookie.net/gta/images/d/d3/Wctr.png/revision/latest/scale-to-width-down/135?cb=20160118222343&path-prefix=pt",
     "https://static.wikia.nocookie.net/gta/images/1/1a/TheLab-Logo-GTAV.png/revision/latest/scale-to-width-down/135?cb=20181023140151&path-prefix=pt",
     "https://static.wikia.nocookie.net/gta/images/c/c3/BlondedLosSantos-GTAV-OfficialLogoColoured.png/revision/latest/scale-to-width-down/135?cb=20180216165759&path-prefix=pt",
-    "https://static.wikia.nocookie.net/gta/images/a/ad/LSUR_Radio_Logo.png/revision/latest/scale-to-width-down/135?cb=20181023140150&path-prefix=pt",
-    "https://static.wikia.nocookie.net/gta/images/b/b6/IFruitRadio-GTAO.png/revision/latest/scale-to-width-down/135?cb=20200430021353&path-prefix=pt",
+    "https://static.wikia.nocookie.net/gta/images/a/ad/LSUR_Radio_Logo.png/revision/latest/scale-to-width-down/135?cb=20181023140150&path-prefix=pt"
 ]
 var radioNames = [
     "Radio Los Santos",
@@ -41,16 +40,7 @@ var radioNames = [
     "West Coast talk radio",
     "The lab",
     "Blonded Los Santos",
-    "LS UR",
-    "iFruit Radio"
-]
-var radioSources = [
-    "https://mp3.fastupload.co/data/1614652257/nonstoppopfm.m4a",
-    "https://mp3.fastupload.co/data/1614719132/space.m4a",
-    "https://mp3.fastupload.co/data/1614719225/westcoastclassics.m4a",
-    "https://mp3.fastupload.co/data/1614719322/rebelradio.m4a",
-    "https://mp3.fastupload.co/data/1614719458/lsrm.m4a", 5, 6,
-    "https://mp3.fastupload.co/data/1614654030/radiolossantos.m4a"
+    "LS UR"
 ]
 
 //create divs
@@ -74,4 +64,7 @@ for (let i = 0; i < radioLogos.length; i++) {
     radiodiv[i].append(radioname);
     radioname.setAttribute("class", "radioname");
     radioname.innerText = radioNames[i]
+
+    var delay = i*0.05;
+    radiodiv[i].style.animationDelay=delay+"s"
 }

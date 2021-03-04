@@ -1,5 +1,34 @@
 
-//gets id and adds eventlistener
+var radioSources = [
+    "https://mp3.fastupload.co/data/1614654030/radiolossantos.m4a",
+    "https://mp3.fastupload.co/data/1614719132/space.m4a",
+    "https://mp3.fastupload.co/data/1614719225/westcoastclassics.m4a",
+    "https://mp3.fastupload.co/data/1614719322/rebelradio.m4a",
+    "https://mp3.fastupload.co/data/1614719458/lsrm.m4a",
+    "https://mp3.fastupload.co/data/1614875861/thelowdown.mp3", 
+    "https://mp3.fastupload.co/data/1614875529/theblueark.mp3",
+    "https://mp3.fastupload.co/data/1614652257/nonstoppopfm.m4a",
+    "https://mp3.fastupload.co/data/1614875307/eastlossantos.mp3",
+    "https://mp3.fastupload.co/data/1614875865/worldwide.mp3",
+    "https://mp3.fastupload.co/data/1614875362/chanelx.mp3",
+    "https://mp3.fastupload.co/data/1614875576/radiomirrorpark.mp3",
+    "https://mp3.fastupload.co/data/1614875919/vinewoodboulevard.mp3",
+    "https://mp3.fastupload.co/data/1614875501/soulwax.mp3",
+    "https://mp3.fastupload.co/data/1614875360/flylo.mp3",
+    "meh0",
+    "https://mp3.fastupload.co/data/1614875799/wctr.mp3",
+    "https://mp3.fastupload.co/data/1614875539/thelab.mp3",
+    "https://mp3.fastupload.co/data/1614875197/blomdedlossantos.mp3",
+    "meh1"
+]
+
+let volume = document.querySelector("#volume-control");
+    volume.addEventListener("change", function(volumeValue) {
+    radioaudio[0].volume = 0;
+    radioaudio[0].volume = volumeValue.currentTarget.value / 100;
+    console.log("volume is: " + radioaudio[0].volume*100)
+})
+
 const radioaudio = document.getElementsByTagName("audio")
 for (let i = 0; i < radioNames.length; i++) {
     let radio = "radio" + [i]
@@ -10,6 +39,7 @@ function checkId(id) {
     radioId = id.path[1].id
     idNumber = radioId.split("ra")
     getSrc(idNumber);
+    console.log(idNumber)
 }
 /*
     gets id of a triggered event div i.e. idNum = 19
@@ -18,17 +48,26 @@ function checkId(id) {
     sets an attribute in src
     calls playaudio function
 */
-function getSrc(idNumber) {
+async function getSrc(idNumber) {
     idNum = idNumber[1]
     SrcDuration = radioaudio[0].duration;
     var seconds = SrcDuration.toString().split('.')
     var randomTime = Math.floor(Math.random() * seconds[0]);
-    radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+    
+    if (isNaN(randomTime)) { //that's cool
+        console.log("it is NaN")
+        randomTime = Math.floor(Math.random() * 1800);
+        console.log(randomTime)
+        await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+    }else{
+        console.log("it wasn't NaN")
+        await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+        console.log(randomTime)
+    }
     playAudio()
 }
-function playAudio() {
+ function playAudio() {
     radioaudio[0].play()
-    radioaudio[0].volume = 0.04;
 }
 
 /*
@@ -42,3 +81,4 @@ function playAudio() {
         radioaudio[0].volume = 0.04;
     }
 */
+
