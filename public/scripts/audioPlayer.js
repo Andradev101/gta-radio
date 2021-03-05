@@ -34,37 +34,38 @@ const radioaudio = document.getElementsByTagName("audio")
 for (let i = 0; i < radioNames.length; i++) {
     let radio = "radio" + [i]
     radio = document.getElementById("ra" + [i]);
-    radio.addEventListener("click", checkId)
+    radio.addEventListener("click", playAudio)
+}
+async function playAudio(id) {
+    srcBlah2 = await checkId(id)
+    srcBlah3 = await getSrc(srcBlah2)
+    radioaudio[0].setAttribute("src", srcBlah3)
+    radioaudio[0].play()
+    console.log(srcBlah2)
 }
 function checkId(id) {
-    radioId =  id.path[1].id
+
+    radioId = id.path[1].id
     idNumber = radioId.split("ra")
-    getSrc(idNumber);
-}
-/*
-    gets id of a triggered event div i.e. idNum = 19
-    gets the metadata.duration info
-    randomize the time in #t=
-    sets an attribute in src
-    calls playaudio function
-*/
-async function getSrc(idNumber) {
-    idNum = idNumber[1]
-    SrcDuration = radioaudio[0].duration;
-    var srcReady = await getSrcReady(idNum);
-    var seconds = SrcDuration.toString().split('.')
-    var randomTime = Math.floor(Math.random() * seconds[0]);
-    radioaudio[0].setAttribute("src",srcReady+randomTime)
-    playAudio()
-}
-function getSrcReady(idNumber){
-    return new Promise(resolve =>{
-        radioSources[idNumber]
+    return new Promise(resolve => {
+        resolve(idNumber[1])
     })
 }
-function playAudio() {
-    radioaudio[0].play()
+async function getSrc(idNumber) {
+    var srcReady = radioSources[idNumber]
+    SrcDuration = radioaudio[0].duration;
+    console.log(SrcDuration)
+    var seconds = SrcDuration.toString().split('.')
+    var randomTime = Math.floor(Math.random() * seconds[0]);
+    srcBlah = srcReady + randomTime
+    return new Promise (resolve =>{
+        resolve(srcReady)
+        console.log(srcBlah);
+    })
 }
+
+
+
 /*
     function playAudio(){
         var randomHour = Math.floor(Math.random() * 3);
