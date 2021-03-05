@@ -21,11 +21,13 @@ var radioSources = [
     "https://mp3.fastupload.co/data/1614875197/blomdedlossantos.mp3",
     "meh1"
 ]
-
+const volVal = document.getElementById("volVal")
 let volume = document.querySelector("#volume-control");
     volume.addEventListener("change", function(volumeValue) {
     radioaudio[0].volume = 0;
     radioaudio[0].volume = volumeValue.currentTarget.value / 100;
+    var showVol = radioaudio[0].volume*100
+    volVal.innerText = showVol
 })
 
 const radioaudio = document.getElementsByTagName("audio")
@@ -49,23 +51,21 @@ function checkId(id) {
 async function getSrc(idNumber) {
     idNum = idNumber[1]
     SrcDuration = radioaudio[0].duration;
+    var srcReady = radioSources[idNum];
     var seconds = SrcDuration.toString().split('.')
-    var randomTime = Math.floor(Math.random() * seconds[0]);
+    var randomTime = Math.floor(Math.random() * seconds[0]); 
+    
+    if (srcReady == undefined) {
+        srcReady = radioSources[idNum];
+        console.log(srcReady)
+    }
     
     if (isNaN(randomTime)) { //that's cool
         randomTime = Math.floor(Math.random() * 1800);
-        radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-
-        if (radioSources[idNum] == undefined) {
-            await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-        }
+        radioaudio[0].setAttribute("src", srcReady + "#t=" + randomTime)
         radioaudio[0].load()
     }else{
         radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-
-        if (radioSources[idNum] == undefined) {
-            await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-        }
         radioaudio[0].load()
     }
     playAudio()

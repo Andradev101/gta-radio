@@ -1,5 +1,6 @@
 /*range volume input*/
 #volume-control{
+  display: inline;
   transform: rotate(270deg);
   cursor: url(/resources/images/cursor.cur), pointer;
 }
@@ -12,7 +13,7 @@ input[type=range]:focus {
   outline: none;
 }
 input[type=range]::-webkit-slider-runnable-track {
-  background: #323232;
+  background: #353535;
   border: 0;
   border-radius: 3.7px;
   width: 100%;
@@ -23,9 +24,7 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -15.9px;
   width: 19px;
   height: 38px;
-  background: #466786;
-  border: 0px solid rgba(0, 0, 0, 0);
-  border: 0;
+  background: #000000;
   border-radius: 19px;
   cursor: url(/resources/images/cursor.cur), pointer;
   -webkit-appearance: none;
@@ -68,7 +67,7 @@ input[type=range]::-ms-fill-upper {
 input[type=range]::-ms-thumb {
   width: 49px;
   height: 16px;
-  background: #466786;
+  background:#323232;
   border: 0px solid rgba(0, 0, 0, 0);
   border: 0;
   border-radius: 23px;

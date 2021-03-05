@@ -64,6 +64,7 @@ for (let i = 0; i < radioLogos.length; i++) {
     radiodiv[i].append(radioname);
     radioname.setAttribute("class", "radioname");
     radioname.innerText = radioNames[i]
+    console.log(radioNames[i])
 
     var delay = i*0.05;
     radiodiv[i].style.animationDelay=delay+"s"
