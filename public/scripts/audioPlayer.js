@@ -51,24 +51,16 @@ function checkId(id) {
 async function getSrc(idNumber) {
     idNum = idNumber[1]
     SrcDuration = radioaudio[0].duration;
-    var srcReady = radioSources[idNum];
+    var srcReady = await getSrcReady(idNum);
     var seconds = SrcDuration.toString().split('.')
-    var randomTime = Math.floor(Math.random() * seconds[0]); 
-    
-    if (srcReady == undefined) {
-        srcReady = radioSources[idNum];
-        console.log(srcReady)
-    }
-    
-    if (isNaN(randomTime)) { //that's cool
-        randomTime = Math.floor(Math.random() * 1800);
-        radioaudio[0].setAttribute("src", srcReady + "#t=" + randomTime)
-        radioaudio[0].load()
-    }else{
-        radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-        radioaudio[0].load()
-    }
+    var randomTime = Math.floor(Math.random() * seconds[0]);
+    radioaudio[0].setAttribute("src",srcReady+randomTime)
     playAudio()
+}
+function getSrcReady(idNumber){
+    return new Promise(resolve =>{
+        radioSources[idNumber]
+    })
 }
 function playAudio() {
     radioaudio[0].play()
