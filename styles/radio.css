@@ -55,7 +55,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.glow-class{
+  background-color: green;
+}
 @keyframes down-appear{
   0.0%{
       transform: translate(100px, 0px) rotate(30deg) scale(0.5);

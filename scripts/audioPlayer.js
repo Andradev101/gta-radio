@@ -26,20 +26,19 @@ let volume = document.querySelector("#volume-control");
     volume.addEventListener("change", function(volumeValue) {
     radioaudio[0].volume = 0;
     radioaudio[0].volume = volumeValue.currentTarget.value / 100;
-    console.log("volume is: " + radioaudio[0].volume*100)
 })
 
 const radioaudio = document.getElementsByTagName("audio")
 for (let i = 0; i < radioNames.length; i++) {
     let radio = "radio" + [i]
-    radio = document.getElementById("ra" + [i])
+    radio = document.getElementById("ra" + [i]);
     radio.addEventListener("click", checkId)
 }
 function checkId(id) {
-    radioId = id.path[1].id
+    radioId =  id.path[1].id
     idNumber = radioId.split("ra")
+    glow(radioId);
     getSrc(idNumber);
-    console.log(idNumber)
 }
 /*
     gets id of a triggered event div i.e. idNum = 19
@@ -48,6 +47,10 @@ function checkId(id) {
     sets an attribute in src
     calls playaudio function
 */
+function glow(radioId){ 
+    var activeRadio = document.getElementById(radioId)
+    activeRadio.classList.add("glow-class")
+}
 async function getSrc(idNumber) {
     idNum = idNumber[1]
     SrcDuration = radioaudio[0].duration;
@@ -55,21 +58,26 @@ async function getSrc(idNumber) {
     var randomTime = Math.floor(Math.random() * seconds[0]);
     
     if (isNaN(randomTime)) { //that's cool
-        console.log("it is NaN")
         randomTime = Math.floor(Math.random() * 1800);
-        console.log(randomTime)
-        await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+        radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+
+        if (radioSources[idNum] == undefined) {
+            await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+        }
+        radioaudio[0].load()
     }else{
-        console.log("it wasn't NaN")
-        await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
-        console.log(randomTime)
+        radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+
+        if (radioSources[idNum] == undefined) {
+            await radioaudio[0].setAttribute("src", radioSources[idNum] + "#t=" + randomTime)
+        }
+        radioaudio[0].load()
     }
     playAudio()
 }
- function playAudio() {
+function playAudio() {
     radioaudio[0].play()
 }
-
 /*
     function playAudio(){
         var randomHour = Math.floor(Math.random() * 3);
@@ -81,4 +89,3 @@ async function getSrc(idNumber) {
         radioaudio[0].volume = 0.04;
     }
 */
-
