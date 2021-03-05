@@ -37,7 +37,6 @@ for (let i = 0; i < radioNames.length; i++) {
 function checkId(id) {
     radioId =  id.path[1].id
     idNumber = radioId.split("ra")
-    glow(radioId);
     getSrc(idNumber);
 }
 /*
@@ -47,10 +46,6 @@ function checkId(id) {
     sets an attribute in src
     calls playaudio function
 */
-function glow(radioId){ 
-    var activeRadio = document.getElementById(radioId)
-    activeRadio.classList.add("glow-class")
-}
 async function getSrc(idNumber) {
     idNum = idNumber[1]
     SrcDuration = radioaudio[0].duration;

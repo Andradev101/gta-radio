@@ -8,16 +8,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="introduction" content="no-reference">
+  <link rel="stylesheet" href="/styles/style.css">
   <link rel="stylesheet" href="/styles/radio.css">
   <link rel="stylesheet" href="/styles/btnStyles.css">
   <title>GTA Radio</title>
 </head>
 
 <body>
-  <div class="flexcontainer">
-    <div class="radiocontainer"></div>
-    <div class="volume">
-      <input type="range" id="volume-control">
+  <div class="container">
+    <div class="flexradio">
+      <div class="radiocontainer"></div>
+      <div class="volume">
+        <input type="range" id="volume-control">
+      </div>
     </div>
   </div>
   <audio preload="metadata" loop></audio>
