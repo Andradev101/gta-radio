@@ -1,6 +1,6 @@
 # gta-radio
 
-This is a basic serveless audio player that acts like a radio, it changes the Audio tag src depending which div you click.
+This is a basic serveless audio player that acts like a radio, it changes the Audio tag src depending which div you click, and adds a random time to the selected file.
 
 -Major problems with async/await | promises;
 -Minor problems with mobile visuals.
