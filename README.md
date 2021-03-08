@@ -2,9 +2,11 @@
 
 This is a basic serveless audio player that acts like a radio, it changes the Audio tag src depending which div you click, and adds a random time to the selected file.
 
--Major problems with async/await | promises;
+[FIXED] - Problems with async/await | promises;
 
--Minor problems with mobile visuals.
+[FIXED] - Problems attribute src returning undefined;
+
+[FIXED] - Problems with mobile visuals;
 
 Turns out the problem was right in my face the whole time, the ID returned when a click happens was returning undefined, even after using the using promises to get the audio source.
 
