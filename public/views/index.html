@@ -16,18 +16,26 @@
 
 <body>
   <div class="bg">
-  </div>
-  <div class="container">
-    <p id="title">GTA V RADIO</p>
-    <div class="flexradio">
-      <div class="radiocontainer"></div>
-      <div class="volume">
-        <input type="range" id="volume-control">
-        <span id="volVal">100</span>
+    <div class="container">
+      <p id="title">GTA V RADIO</p>
+      <span>You are listening to: </span><p id="status"></p>
+      <div class="flexradio">
+        <div class="radiocontainer"></div>
+        <div class="volume">
+          <input type="range" id="volume-control">
+          <span id="volVal">100</span>
+        </div>
       </div>
+      <footer>
+        <p>Made by:</p> 
+        <a target="_blank" href="https://github.com/andradev101">Andradev101</a>
+        <a target="_blank" href="https://github.com/Andradev101/gta-radio">Github</a>
+      </footer>
     </div>
-
   </div>
+
+
+
   <audio preload="metadata" loop></audio>
   <script src="/scripts/images.js"></script>
   <script src="/scripts/audioPlayer.js"></script>

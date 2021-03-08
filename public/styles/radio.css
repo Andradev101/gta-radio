@@ -2,12 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.103);
+    background: linear-gradient(90deg, rgba(235, 173, 114, 0.281) 0%, rgba(140,140,140,0) 50%, rgba(238, 98, 98, 0.274) 100%);
     backdrop-filter: blur(5px);
     border-radius: 10px;
     padding: 10px;
-    max-width: 500px;
-    min-width: 400px;
+    max-width: 1000px;
+    min-width: 460px;
+    transition: all 1.5s;
+    opacity: 0;
 }
 .radiocontainer{
   display: flex;
@@ -16,6 +18,7 @@
   flex-wrap: wrap;
 }
 .radio{
+  cursor: url(/resources/images/cursor.cur),pointer;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -23,10 +26,11 @@
   overflow: hidden;
   border-radius: 10px;
   width: 80px;
-  height: 90px;
+  height: 110px;
   margin: 5px;
   padding: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.199);
+  border: 1px solid rgba(255, 255, 255, 0.486);
+  background-color: rgba(0, 0, 0, 0.089);
   transition: all 0.2s;
   animation: down-appear 0.5s normal backwards cubic-bezier(0.05, 0.41, 0.31, 0.81);
   opacity: 1;
@@ -56,7 +60,7 @@
 }
 #volVal{
   font-size: 30px;
-  color: black;
+  color: white;
   position: relative;
   top: 60px;
 }
@@ -68,5 +72,64 @@
   100%{
       transform: translate(0, 0px) rotate(0deg) scale(1);
       opacity: 1;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 600px) {
+  .container{
+    justify-content: space-between;
+  }
+  .volume {
+    display: none;
+  }
+  p, #title, #status{
+    font-size:20px;
+  }
+  .flexradio{
+    min-width: 350px;
+  }
+  .radio{
+    cursor: url(/resources/images/cursor.cur),pointer;
+    width: 70px;
+    height: 95px;
+    margin: 3px;
+    padding: 0px;
+  }
+  footer{
+    position: initial;
+    width: 100%;
+  }
+  footer p{
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  .container{
+    justify-content: space-between;
+  }
+  .volume {
+    display: none;
+  }
+  p, #title, #status{
+    font-size:20px;
+  }
+  .flexradio{
+    min-width: 200px;
+  }
+  .radio{
+    cursor: url(/resources/images/cursor.cur),pointer;
+    width: 65px;
+    height: 65px;
+    margin: 3px;
+    padding: 0px;
+  }
+  .radio p{
+    display: none;
+  }
+  footer{
+    position: initial;
+    width: 100%;
+  }
+  footer p{
+    font-size: 15px;
   }
 }

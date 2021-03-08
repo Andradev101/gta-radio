@@ -24,47 +24,47 @@ var radioSources = [
 const volVal = document.getElementById("volVal")
 let volume = document.querySelector("#volume-control");
     volume.addEventListener("change", function(volumeValue) {
-    radioaudio[0].volume = 0;
-    radioaudio[0].volume = volumeValue.currentTarget.value / 100;
-    var showVol = radioaudio[0].volume*100
-    volVal.innerText = showVol
+    radioAudio.volume = 0;
+    radioAudio.volume = volumeValue.currentTarget.value / 100;
+    var showVol = radioAudio.volume*100
+    volVal.innerText = showVol.toFixed()
+    console.log(showVol);
 })
 
-const radioaudio = document.getElementsByTagName("audio")
+const radioAudio = document.getElementsByTagName("audio")[0]
 for (let i = 0; i < radioNames.length; i++) {
     let radio = "radio" + [i]
     radio = document.getElementById("ra" + [i]);
-    radio.addEventListener("click", playAudio)
+    radio.addEventListener("click", checkId)
 }
-async function playAudio(id) {
-    srcBlah2 = await checkId(id)
-    srcBlah3 = await getSrc(srcBlah2)
-    radioaudio[0].setAttribute("src", srcBlah3)
-    radioaudio[0].play()
-    console.log(srcBlah2)
+function checkId() {
+    replydiv = this.id
+    finalId = replydiv.split("ra")[1]
+    getSrc()
 }
-function checkId(id) {
-
-    radioId = id.path[1].id
-    idNumber = radioId.split("ra")
-    return new Promise(resolve => {
-        resolve(idNumber[1])
-    })
-}
-async function getSrc(idNumber) {
-    var srcReady = radioSources[idNumber]
-    SrcDuration = radioaudio[0].duration;
-    console.log(SrcDuration)
+function getSrc() {
+    var srcReady = radioSources[finalId]
+    SrcDuration = radioAudio.duration;
     var seconds = SrcDuration.toString().split('.')
     var randomTime = Math.floor(Math.random() * seconds[0]);
-    srcBlah = srcReady + randomTime
-    return new Promise (resolve =>{
-        resolve(srcReady)
-        console.log(srcBlah);
-    })
+    if (isNaN(randomTime)) {
+        randomTime = Math.floor(Math.random() * 1800);
+        console.log("it was nan");
+    }
+    radioAudio.setAttribute("src", srcReady +"#t="+randomTime);
+    console.log(radioAudio);
+    playAudio()
+
+    
+    const status = document.getElementById("status")
+    console.log(status)
+    status.innerText = radioNames[finalId];
+    status.classList.add("glow")
 }
 
-
+function playAudio() {
+    radioAudio.play()
+}
 
 /*
     function playAudio(){
@@ -72,8 +72,8 @@ async function getSrc(idNumber) {
         var randomSec = Math.floor(Math.random() * 60);
         var timeStamp = "#t="+((randomHour * 3600)+randomSec);
         console.log(timeStamp)
-        radioaudio[0].setAttribute("src","https://mp3.fastupload.co/data/1614652257/nonstoppopfm.m4a"+timeStamp)
-        radioaudio[0].play()
-        radioaudio[0].volume = 0.04;
+        radioAudio.setAttribute("src","https://mp3.fastupload.co/data/1614652257/nonstoppopfm.m4a"+timeStamp)
+        radioAudio.play()
+        radioAudio.volume = 0.04;
     }
 */

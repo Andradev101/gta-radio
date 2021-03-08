@@ -4,39 +4,72 @@
   margin: 0;
   font-family: 'Quicksand', sans-serif;
 }
-.bg{
-  position: absolute;
-  z-index: -1000;
+html{
+  height: 100%;
   width: 100%;
-  height: 100vh;
-  background: url(/resources/images/bg.jpg);
+}
+body {
+  min-height: 100%;
+  min-width: 100%;
+  background-image: url(https://i.imgur.com/7VYaQX7.jpg);
+  background-position: bottom;
   background-size: cover;
 }
-.bg #bgimg{
-  height: 100%;
+.bg{
+  min-height: 100%;
+  min-width: 100%;
+  background: rgba(0, 0, 0);
   overflow: hidden;
-  position: absolute;
-  transform: scale(1.5);
+  transition: all 1s;
 }
 .container{
+  min-height: 100vh;
+  min-width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-direction: column;
+}
+p, span{
+  color: white;
+  text-align: center;
 }
 #title{
-  color: white;
-  font-size: 50px;
+  font-size: 70px;
 }
-.radio{
-  cursor: url(/resources/images/cursor.cur), pointer;
+#status, span{
+  display: inline;
+  font-size: clamp(20px,30px,40px);
 }
-.flexcontainer{
+footer{
+  width: 100%;
+  font-size: 10px;
   display: flex;
-  flex-direction: row;
-  background-color: rgb(61, 61, 61);
-  display: flex;
-  justify-content: center;
   align-items: center;
+
+  position: absolute;
+  bottom: 0;
+}
+footer a{
+  background-color: rgba(0, 0, 0, 0.897);
+  margin: 0 2px;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+footer a:hover{
+  background-color: rgb(36, 67, 114);
+}
+.glow{
+  animation: glow 0.5s infinite alternate;
+}
+@keyframes glow{
+  from{
+    text-shadow: 0px 0px 8px white;
+  }
+  to{
+    text-shadow: 0px 0px 0px white;
+  }
 }
