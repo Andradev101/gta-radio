@@ -28,7 +28,6 @@ let volume = document.querySelector("#volume-control");
     radioAudio.volume = volumeValue.currentTarget.value / 100;
     var showVol = radioAudio.volume*100
     volVal.innerText = showVol.toFixed()
-    console.log(showVol);
 })
 
 const radioAudio = document.getElementsByTagName("audio")[0]
@@ -49,15 +48,12 @@ function getSrc() {
     var randomTime = Math.floor(Math.random() * seconds[0]);
     if (isNaN(randomTime)) {
         randomTime = Math.floor(Math.random() * 1800);
-        console.log("it was nan");
     }
     radioAudio.setAttribute("src", srcReady +"#t="+randomTime);
-    console.log(radioAudio);
     playAudio()
 
     
     const status = document.getElementById("status")
-    console.log(status)
     status.innerText = radioNames[finalId];
     status.classList.add("glow")
 }
